@@ -2,7 +2,8 @@ import { useAuth } from "@clerk/expo";
 import { Redirect } from "expo-router";
 
 export default function Index() {
-  const { isSignedIn, isLoaded } = useAuth();
+
+  const { isLoaded, isSignedIn } = useAuth();
 
   if (!isLoaded) return null;
 

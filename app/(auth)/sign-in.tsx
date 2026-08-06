@@ -52,13 +52,16 @@ export default function SignIn() {
           if (session?.currentTask) return;
           const url = decorateUrl("/");
           router.replace(url as any);
+
+
         },
       });
+       console.log("After finalize");
     } else if (signIn.status === "needs_second_factor") {
       await signIn.mfa.sendPhoneCode();
     } else if (signIn.status === "needs_client_trust") {
       const emailCodeFactor = signIn.supportedSecondFactors.find(
-        (factor) => factor.strategy === "email_code"
+        (factor) => factor.strategy === "email_code",
       );
       if (emailCodeFactor) {
         await signIn.mfa.sendEmailCode();
